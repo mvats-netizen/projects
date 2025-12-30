@@ -1,0 +1,129 @@
+# Graph-Native Learner Risk & Intervention Engine Configuration
+
+# Knowledge Graph Settings
+graph:
+  node_types:
+    - module
+    - assessment
+    - skill
+  edge_types:
+    - prerequisite
+    - teaches
+    - requires
+    - follows
+  metadata:
+    include_difficulty: true
+    include_completion_rate: true
+    include_avg_score: true
+    include_time_estimate: true
+
+# GNN Model Settings
+gnn:
+  model_type: "GraphSAGE"  # Options: GraphSAGE, GCN, GAT
+  embedding_dim: 128
+  num_layers: 3
+  aggregator: "mean"  # Options: mean, max, lstm
+  dropout: 0.3
+  activation: "relu"
+  use_batch_norm: true
+  
+# Temporal Model Settings
+temporal_model:
+  model_type: "transformer"  # Options: transformer, lstm, gru
+  hidden_dim: 256
+  num_heads: 8
+  num_layers: 4
+  dropout: 0.2
+  max_sequence_length: 100
+  use_positional_encoding: true
+
+# Risk Prediction Settings
+risk_prediction:
+  prediction_horizon: 5  # Number of modules ahead to predict
+  risk_thresholds:
+    low: 0.3
+    medium: 0.6
+    high: 0.8
+  output_metrics:
+    - dropout_probability
+    - edge_transition_risk
+    - time_to_dropout
+    - confidence_score
+
+# Training Settings
+training:
+  batch_size: 64
+  learning_rate: 0.001
+  epochs: 100
+  early_stopping_patience: 10
+  optimizer: "adam"
+  loss_function: "binary_cross_entropy"
+  use_class_weights: true
+  validation_split: 0.2
+  test_split: 0.1
+  
+# Explainability Settings
+explainability:
+  methods:
+    - shap
+    - attention_weights
+    - gradient_based
+  num_samples: 1000
+  background_data_size: 100
+  output_formats:
+    - json
+    - html
+    - visualization
+
+# Intervention Settings
+intervention:
+  strategies:
+    - remedial_content
+    - alternative_path
+    - targeted_nudge
+    - peer_support
+    - instructor_attention
+  min_impact_threshold: 0.1  # Minimum expected improvement
+  max_interventions_per_learner: 3
+  priority_metric: "expected_value"  # Options: expected_value, cost_effectiveness
+
+# Visualization Settings
+visualization:
+  graph_layout: "hierarchical"  # Options: hierarchical, force_directed, circular
+  node_size_metric: "dropout_rate"
+  edge_width_metric: "transition_difficulty"
+  color_scheme: "risk_gradient"
+  include_labels: true
+  output_format: "html"  # Options: html, png, svg
+
+# Data Settings
+data:
+  min_learners_per_course: 100
+  min_modules_completed: 1
+  filter_outliers: true
+  outlier_threshold: 3  # Standard deviations
+  imputation_strategy: "median"
+  feature_scaling: "standard"  # Options: standard, minmax, robust
+
+# Evaluation Metrics
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - auc_roc
+    - auc_pr
+    - brier_score
+  cross_validation_folds: 5
+  stratify_by: "dropout_status"
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  log_to_file: true
+  log_dir: "logs/"
+  log_models: true
+  log_predictions: true
+
+

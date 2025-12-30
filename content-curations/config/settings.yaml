@@ -1,0 +1,56 @@
+# AI-Led Curations Configuration
+
+# Embedding Settings
+embedding:
+  provider: "openai"  # or "gemini"
+  model: "text-embedding-3-small"  # OpenAI model
+  # model: "models/embedding-001"  # Gemini model
+  dimensions: 1536  # 1536 for OpenAI, 768 for Gemini
+  batch_size: 100  # Number of texts to embed in one API call
+
+# Chunking Settings (Sentence-Level with Sliding Window)
+chunking:
+  # Sliding window configuration
+  window_size: 5  # Total sentences in window (2 before + center + 2 after)
+  context_before: 2  # Sentences before the center
+  context_after: 2  # Sentences after the center
+  
+  # Minimum/Maximum constraints
+  min_sentence_length: 10  # Minimum characters for a valid sentence
+  max_chunk_tokens: 512  # Maximum tokens per chunk (for embedding model limits)
+  
+  # Overlap strategy
+  stride: 1  # Move window by 1 sentence at a time (maximum granularity)
+
+# Vector Database Settings
+vector_db:
+  type: "faiss"
+  index_type: "IVFFlat"  # or "Flat" for small datasets
+  nlist: 100  # Number of clusters for IVF
+  nprobe: 10  # Number of clusters to search
+  
+  # Storage paths
+  index_path: "data/vector_store/transcript_index.faiss"
+  metadata_path: "data/vector_store/transcript_metadata.json"
+
+# Search Settings
+search:
+  top_k: 10  # Number of results to return
+  similarity_threshold: 0.7  # Minimum similarity score
+  
+  # Cascading batch sizes (from PRD)
+  batch_1_size: 5  # High probability courses
+  batch_2_size: 15  # Discovery courses (6-20)
+  batch_3_size: 50  # Long tail
+
+# Skill Extraction Settings (Secondary layer)
+skill_extraction:
+  enabled: true
+  model: "gpt-4o-mini"  # or "gemini-1.5-flash"
+  taxonomy_path: "data/taxonomy/coursera_skills.json"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/pipeline.log"
+

@@ -1,0 +1,40 @@
+# AI-Led Curations - Transcript Embedding Pipeline
+# Core dependencies
+
+# NLP & Text Processing
+nltk>=3.8.1
+spacy>=3.7.0
+
+# Embeddings & Vector Search
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+
+# Sentence Transformers (FREE local embeddings)
+sentence-transformers>=2.2.0
+keybert>=0.8.0
+
+# Optional: API-based embeddings (if preferred)
+openai>=1.0.0
+
+# Data Processing
+pandas>=2.0.0
+pydantic>=2.0.0
+
+# Async & Performance
+aiohttp>=3.9.0
+tqdm>=4.66.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+
+# Web UI
+streamlit>=1.28.0
+
+# Optional: For Gemini
+google-generativeai>=0.3.0
+
+# Optional: For subtitle parsing
+pysrt>=1.1.2
+webvtt-py>=0.4.6
+
