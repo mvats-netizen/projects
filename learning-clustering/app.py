@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+from pathlib import Path
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Page Configuration
@@ -110,7 +111,10 @@ def style_plot(fig):
 
 @st.cache_data(show_spinner=False, ttl=3600)
 def load_data():
-    return pd.read_csv("base_data_30.csv")
+    # Get the directory where this script is located
+    script_dir = Path(__file__).parent
+    csv_path = script_dir / "base_data_30.csv"
+    return pd.read_csv(csv_path)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Header
