@@ -1,6 +1,77 @@
 # AI-Led Curations .gitignore
 
-# Python
+# =============================================================================
+# SECRETS & CREDENTIALS (CRITICAL - Never commit these!)
+# =============================================================================
+
+# Environment files with secrets
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
+
+# Config files with credentials
+config/databricks.env
+config/secrets.env
+!config/*.example
+
+# API keys and tokens (in case they're in standalone files)
+**/api_key*
+**/apikey*
+**/secret*
+!**/secrets.env.example
+**/*_credentials*
+**/*_token*
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# =============================================================================
+# LARGE FILES (Embeddings, Indexes, Data)
+# =============================================================================
+
+# Embeddings (can be very large)
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Vector indexes
+*.faiss
+*.index
+*.bin
+
+# Large data files
+*.parquet
+*.h5
+*.hdf5
+
+# Data directories with large content
+data/domain_indexes/
+data/index/
+data/pipeline_index/
+data/vector_store/
+data/sample_index/
+
+# Keep test_indexes structure but ignore large files inside
+data/test_indexes/**/embeddings.npy
+data/test_indexes/**/faiss.index
+
+# Large JSON files (content/enriched can be huge)
+data/**/content.json
+data/**/enriched.json
+data/pipeline_*.json
+data/sample_*.json
+
+# Excel files with sensitive data
+data/**/*.xlsx
+!data/CourseCatalogue.xlsx
+
+# =============================================================================
+# PYTHON
+# =============================================================================
+
 __pycache__/
 *.py[cod]
 *$py.class
@@ -27,37 +98,64 @@ venv/
 ENV/
 env/
 .venv/
+.conda/
 
-# IDE
+# =============================================================================
+# IDE & EDITOR
+# =============================================================================
+
 .idea/
 .vscode/
 *.swp
 *.swo
+*.sublime-workspace
+*.sublime-project
 .DS_Store
+Thumbs.db
 
-# Environment variables
-.env
-.env.local
+# =============================================================================
+# LOGS & CACHE
+# =============================================================================
 
-# Data and indexes (large files)
-data/vector_store/
-data/sample_index/
-*.faiss
-metadata.json
-
-# Logs
 logs/
 *.log
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Testing
+.cache/
 .pytest_cache/
 .coverage
 htmlcov/
+.mypy_cache/
 
-# Keep data directories but ignore contents
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =============================================================================
+# TESTING & BUILD
+# =============================================================================
+
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# =============================================================================
+# KEEP THESE (use ! to un-ignore)
+# =============================================================================
+
+# Keep example/template files
+!*.example
+!*.template
+
+# Keep directory structure
 !data/.gitkeep
 !logs/.gitkeep
 
+# Keep small config files
+!config/settings.yaml
+!config/*.example
+
+# Keep chunks.json and config.json (metadata, not huge)
+!data/test_indexes/**/chunks.json
+!data/test_indexes/**/config.json

@@ -344,3 +344,12 @@ class SubtitleParser:
         """
         return ' '.join(s['text'] for s in segments)
 
+
+
+
+
+
+
+
+
+

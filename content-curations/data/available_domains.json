@@ -1,0 +1,83 @@
+{
+  "extracted_at": "2026-01-15T15:14:13.497052",
+  "total_domains": 11,
+  "domains": [
+    {
+      "domain": "Business",
+      "course_count": 16168,
+      "launched_courses": 10386,
+      "avg_rating": 4.5858513732,
+      "english_courses": 13456
+    },
+    {
+      "domain": "Computer Science",
+      "course_count": 13525,
+      "launched_courses": 9232,
+      "avg_rating": 4.4075742152,
+      "english_courses": 11913
+    },
+    {
+      "domain": "Data Science",
+      "course_count": 5878,
+      "launched_courses": 3915,
+      "avg_rating": 4.3998150202,
+      "english_courses": 5122
+    },
+    {
+      "domain": "Information Technology",
+      "course_count": 5830,
+      "launched_courses": 4660,
+      "avg_rating": 4.5409493641,
+      "english_courses": 4600
+    },
+    {
+      "domain": "Arts and Humanities",
+      "course_count": 3136,
+      "launched_courses": 1346,
+      "avg_rating": 4.5908614358,
+      "english_courses": 2809
+    },
+    {
+      "domain": "Health",
+      "course_count": 2859,
+      "launched_courses": 2015,
+      "avg_rating": 4.695063164,
+      "english_courses": 2461
+    },
+    {
+      "domain": "Physical Science and Engineering",
+      "course_count": 2585,
+      "launched_courses": 1785,
+      "avg_rating": 4.6403302617,
+      "english_courses": 2216
+    },
+    {
+      "domain": "Social Sciences",
+      "course_count": 2247,
+      "launched_courses": 1569,
+      "avg_rating": 4.6766145903,
+      "english_courses": 1628
+    },
+    {
+      "domain": "Personal Development",
+      "course_count": 1797,
+      "launched_courses": 1101,
+      "avg_rating": 4.6723336569,
+      "english_courses": 1446
+    },
+    {
+      "domain": "Language Learning",
+      "course_count": 546,
+      "launched_courses": 401,
+      "avg_rating": 4.5945123536,
+      "english_courses": 426
+    },
+    {
+      "domain": "Math and Logic",
+      "course_count": 535,
+      "launched_courses": 338,
+      "avg_rating": 4.529605949,
+      "english_courses": 418
+    }
+  ]
+}

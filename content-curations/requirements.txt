@@ -8,6 +8,7 @@ spacy>=3.7.0
 # Embeddings & Vector Search
 faiss-cpu>=1.7.4
 numpy>=1.24.0
+pinecone>=7.0.0
 
 # Sentence Transformers (FREE local embeddings)
 sentence-transformers>=2.2.0
@@ -15,6 +16,10 @@ keybert>=0.8.0
 
 # Optional: API-based embeddings (if preferred)
 openai>=1.0.0
+
+# Data Sources
+databricks-sql-connector>=2.9.0
+openpyxl>=3.1.0
 
 # Data Processing
 pandas>=2.0.0
@@ -38,3 +43,7 @@ google-generativeai>=0.3.0
 pysrt>=1.1.2
 webvtt-py>=0.4.6
 
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0

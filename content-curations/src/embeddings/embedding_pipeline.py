@@ -3,7 +3,7 @@ Embedding Pipeline for Transcript Chunks
 
 Supports multiple embedding providers:
 - OpenAI (text-embedding-3-small, text-embedding-3-large)
-- Google Gemini (models/embedding-001)
+- Google Gemini (models/gemini-embedding-001, 3072 dims)
 
 Usage:
     >>> pipeline = EmbeddingPipeline(provider="openai", model="text-embedding-3-small")
@@ -96,7 +96,7 @@ class OpenAIEmbedder(BaseEmbedder):
 class GeminiEmbedder(BaseEmbedder):
     """Google Gemini embedding provider."""
     
-    def __init__(self, model: str = "models/embedding-001", api_key: Optional[str] = None):
+    def __init__(self, model: str = "models/gemini-embedding-001", api_key: Optional[str] = None):
         self.model = model
         self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
         
@@ -220,7 +220,7 @@ class EmbeddingPipeline:
         if model is None:
             model = {
                 EmbeddingProvider.OPENAI: "text-embedding-3-small",
-                EmbeddingProvider.GEMINI: "models/embedding-001",
+                EmbeddingProvider.GEMINI: "models/gemini-embedding-001",  # Updated from deprecated embedding-001
                 EmbeddingProvider.LOCAL: "all-mpnet-base-v2",  # Good balance of speed/quality
             }[self.provider]
         
@@ -232,7 +232,7 @@ class EmbeddingPipeline:
             self.dimensions = 1536 if "small" in model else 3072
         elif self.provider == EmbeddingProvider.GEMINI:
             self.embedder = GeminiEmbedder(model=model, api_key=api_key)
-            self.dimensions = 768
+            self.dimensions = 3072  # gemini-embedding-001 outputs 3072 dims
         elif self.provider == EmbeddingProvider.LOCAL:
             self.embedder = LocalEmbedder(model=model)
             self.dimensions = self.embedder.dimensions

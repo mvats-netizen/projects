@@ -384,3 +384,12 @@ class FAISSVectorStore:
     def __repr__(self) -> str:
         return f"FAISSVectorStore(chunks={len(self.chunks)}, dimensions={self.dimensions})"
 
+
+
+
+
+
+
+
+
+
